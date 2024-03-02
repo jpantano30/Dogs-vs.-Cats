@@ -9,9 +9,12 @@
   <link rel="stylesheet" href="https://use.typekit.net/oui3bwg.css">
 </head>
 <body>
-
+  <div class="InstBtns">
+    <button class="iBtns" id="instructions">Instructions</button>
+    <button class="iBtns" id="close-instr">Close Instructions</button>
+  </div>
   <div class="modal-container" id="modal">
-    <div class="modal-textbox"> 
+    <div class="modal-textbox1"> 
       <h1>Dogs vs. Cats</h1>
       <h3>Welcome to Dogs vs. Cats, a game of tic-tac-toe.</h3>
       <ol>
@@ -45,7 +48,7 @@
         </li>
       </ol>
       <h2>Enjoy the game and may the best player win!</h2>
-      <button class="continue" type="button">Continue</button>
+      <button class="continue" type="button" id="cont-1">Continue</button>
     </div>
   </div>
 
@@ -62,7 +65,7 @@
         <button class="choice" id="three">Regular 3x3 board</button>
         <button class="choice" id="four">Large 4x4 board</button>
       </div> 
-      <button class="continue" type="button">Continue</button>
+      <button class="continue" type="button" id="cont-2">Continue</button>
     </div>
   </div>
 <!-- change player 1 and player 2 to the input names  -->
@@ -78,7 +81,7 @@
         <label id="p2NameLabel" for="insrtname2">Player 2:</label>
         <input type="text" id="insrtname2">
       </div>
-      <button class="continue" type="button">Continue</button>
+      <button class="continue" id="cont-3" type="button">Continue</button>
     </div>
   </div>
   <div class="modal-container" id="modal4">
@@ -95,17 +98,21 @@
 
         <div id="coin-choice">
           <p>Player 1 click on either heads or tails.<p>
-          <button class="coinBtn" id="headsBtn"><img class="coinImg" alt="heads" id="heads" src="/other/heads.png"></button>
-          <button class="coinBtn" id="tailsBtn"><img class="coinImg" id="tails" alt="tails" src="/other/tails.png"></button>
+          <div id="coin-choice-btns">
+            <button class="coinBtn" id="headsBtn"><img class="coinImg" alt="heads" id="heads" src="/other/heads.png"></button>
+            <button class="coinBtn" id="tailsBtn"><img class="coinImg" id="tails" alt="tails" src="/other/tails.png"></button>
+          </div>
         </div>
 
         <div id="coin-flip"> 
+          <h3>Click the coin below to toss!</h3>
           <button id="btnFlip"><div id="flip-animation" class="coinFlipAnimation">
             <img id="coin" class="coinImg" alt="coin" src="/other/heads.png">
           </div></button>
           <h2 id="result"></h2>
         </div>
         <button class="continue" type="button" id="playGameBtn">PLAY GAME!</button>
+        <button class="continue" type="button" id="resetCoinToss">Reset Coin Toss</button>
       </div>
     </div>
   </div>

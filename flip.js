@@ -3,10 +3,12 @@
 
   const coin = document.getElementById('coin')
   const result = document.getElementById('result')
+  const headsBtn = document.getElementById('headsBtn')
+  const tailsBtn = document.getElementById('tailsBtn')
 
   //event listeners 
-  document.getElementById('headsBtn').addEventListener('click', () => chooseSide('heads'))
-  document.getElementById('tailsBtn').addEventListener('click', () => chooseSide('tails'))
+  headsBtn.addEventListener('click', () => chooseSide('heads'))
+  tailsBtn.addEventListener('click', () => chooseSide('tails'))
   document.getElementById('btnFlip').addEventListener('click', flipCoin)
   document.getElementById('playGameBtn').addEventListener('click', playGame)
 
@@ -14,6 +16,7 @@
   function chooseSide(side) {
     chosenSide = side
     result.innerText = ''
+    document.getElementById('coin-choice-btns').innerHTML = `<button class="coinBtn" id="${side}Btn"><img class="coinImg" alt="${side}" id="${side}" src="/other/${side}.png"></button>`
   }
 
   function flipCoin() {
@@ -88,3 +91,51 @@
       // Perform actions for player moving second
     }
   }
+
+const modal1 = document.getElementById('modal')
+const modal2 = document.getElementById('modal2')
+const modal3 = document.getElementById('modal3')
+const modal4 = document.getElementById('modal4')
+const instructionsBtn = document.getElementById('instructions')
+
+
+// continue buttons modals 
+document.getElementById('cont-1').addEventListener('click', () => {
+  modal1.style.display = 'none'
+  modal2.style.display = 'block'
+})
+
+document.getElementById('cont-2').addEventListener('click', () => {
+  modal2.style.display = 'none'
+  modal3.style.display = 'block'
+})
+
+document.getElementById('cont-3').addEventListener('click', () => { 
+  modal3.style.display = 'none'
+  modal4.style.display = 'block'
+})
+
+instructionsBtn.addEventListener('click', () => {
+  modal1.style.display = 'block'
+  modal2.style.display = 'none' 
+  modal3.style.display = 'none' 
+  modal4.style.display = 'none'
+  resetCoinBox()
+})
+document.getElementById('close-instr').addEventListener('click', () => {
+  modal1.style.display = 'none'
+  modal2.style.display = 'none'
+  modal3.style.display = 'none'
+  modal4.style.display = 'none'
+  resetCoinBox()
+})
+document.getElementById('resetCoinToss').addEventListener('click', () => { 
+  resetCoinBox()
+})
+
+
+const resetCoinBox = () => {
+  document.getElementById('coin-choice-btns').innerHTML = `<button class="coinBtn" id="headsBtn"><img class="coinImg" alt="heads" id="heads" src="/other/heads.png"></button>
+  <button class="coinBtn" id="tailsBtn"><img class="coinImg" id="tails" alt="tails" src="/other/tails.png"></button>`
+  result.innerText = ''
+}
