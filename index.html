@@ -6,8 +6,133 @@
   <title>Dogs Vs. Cats</title>
   <link rel="stylesheet" href="main.css">
   <script src="flip.js" defer></script>
+  <link rel="stylesheet" href="https://use.typekit.net/oui3bwg.css">
 </head>
 <body>
+
+  <div class="modal-container" id="modal">
+    <div class="modal-textbox"> 
+      <h1>Dogs vs. Cats</h1>
+      <h3>Welcome to Dogs vs. Cats, a game of tic-tac-toe.</h3>
+      <ol>
+        <li>Choose the number of players: 
+          <ul>
+            <li>One player</li>
+            <li>Two player</li>
+          </ul>
+        </li>
+        <li> Choose the board size:
+          <ul>
+            <li>Regular 3x3 board</li>
+            <li>Large 4x4 board</li>
+          </ul>
+        </li>
+        <li>Enter your username:</li>
+        <li> A coin toss will determine who goes first:
+          <ul>
+            <li>Player one chooses heads or tails.</li>
+            <ul>
+              <li>If heads, player one moves first with the dog character.</li>
+              <li>If tails, player one plays second with the cat character.</li>
+            </ul>
+          </ul>
+        </li>
+        <li>Game board
+          <ul>
+            <li>Click on an empty box to place your character.</li>
+            <li>The first player to get 3 (on 3x3 board) or 4 (on 4x4 board) in a row wins!</li>
+          </ul>
+        </li>
+      </ol>
+      <h2>Enjoy the game and may the best player win!</h2>
+      <button class="continue" type="button">Continue</button>
+    </div>
+  </div>
+
+  <div class="modal-container" id="modal2">
+    <div class="modal-textbox"> 
+      <h1>Dogs vs. Cats</h1>
+      <h3>Choose the number of players:</h3>
+      <div id="numPlayers">
+        <button class="choice" id="onePlayer">One Player</button>
+        <button class="choice" id="twoPlayer">Two Player</button>
+      </div>
+      <h3>Choose the board size:</h3>
+      <div id="boardSize">
+        <button class="choice" id="three">Regular 3x3 board</button>
+        <button class="choice" id="four">Large 4x4 board</button>
+      </div> 
+      <button class="continue" type="button">Continue</button>
+    </div>
+  </div>
+<!-- change player 1 and player 2 to the input names  -->
+  <div class="modal-container" id="modal3">
+    <div class="modal-textbox"> 
+      <h1>Dogs vs. Cats</h1> 
+      <p>Reminder: Player 1 chooses heads or tails.<p>
+      <h3>Enter your username:</h3>
+      <div id="username"> 
+        <label for="insrtname1">Player 1:</label>
+        <input type="text" id="insrtname1">
+        <br>
+        <label id="p2NameLabel" for="insrtname2">Player 2:</label>
+        <input type="text" id="insrtname2">
+      </div>
+      <button class="continue" type="button">Continue</button>
+    </div>
+  </div>
+  <div class="modal-container" id="modal4">
+    <div class="modal-textbox"> 
+      <div class="coinToss">
+        <!-- <video preload="" autoplay="" muted="" playsinline="" loop="" id="coinVid">
+          <source src="/other/Untitled.mov" type="video/mp4">
+        </video> -->
+        <h1>Coin Toss</h1>
+        <h3>A coin toss will determine who goes first:</h3>
+        <p id="resultMeaning">If heads, player one moves first with the dog character.
+        <br>
+        If tails, player one plays second with the cat character.</p>
+
+        <div id="coin-choice">
+          <p>Player 1 click on either heads or tails.<p>
+          <button class="coinBtn" id="headsBtn"><img class="coinImg" alt="heads" id="heads" src="/other/heads.png"></button>
+          <button class="coinBtn" id="tailsBtn"><img class="coinImg" id="tails" alt="tails" src="/other/tails.png"></button>
+        </div>
+
+        <div id="coin-flip"> 
+          <button id="btnFlip"><div id="flip-animation" class="coinFlipAnimation">
+            <img id="coin" class="coinImg" alt="coin" src="/other/heads.png">
+          </div></button>
+          <h2 id="result"></h2>
+        </div>
+        <button class="continue" type="button" id="playGameBtn">PLAY GAME!</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
   
+
+
+
+      
+        <!-- <li>Game board
+          <ul>
+            <li>Click on an empty box to place your character.</li>
+            <li>The first player to get 3 (on 3x3 board) or 4 (on 4x4 board) in a row wins!</li>
+          </ul>
+        </li>
+      </ol>
+      <h2>Enjoy the game and may the best player win!</h2>
+      
+    </div>
+  </div> -->
+
+  
+
+
 </body>
 </html>
