@@ -12,22 +12,54 @@ body {
   font-family: "sinete", sans-serif;
   font-weight: 400;
   font-style: normal;
+  display: grid;
+  grid-template-columns:  0.3fr 1fr 1fr 1fr 0.3fr;
+  grid-template-rows: auto 200px 80px auto 50px;
+  grid-gap: 10px;
+  grid-template-areas:
+    " . . instructionButtons . . "
+    " . scoreboard scoreboard scoreboard . "
+    " . gameh1 gameh1 gameh1 . "
+    " . board board board . "
+    " . . playagain . . "; 
 }
 
-.InstBtns {
+.instBtns {
+  grid-area: instructionButtons;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-left: 10px;
+  
 }
-.iBtns {
+
+.close-instr {
   background-color: black;
   color: white;
   border-radius: 10px;
-  border: 3px solid black;
-  font-size: 20px;
+  border: 2px solid white;
+  font-size: 25px;
   margin-top: 10px;
+  font-family: "sinete", sans-serif;
 }
-.iBtns:hover {
+.close-instr:hover {
+  background-color: white;
+  color: black;
+  border: 3px solid black;
+}
+
+.instructionsBtns {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 25px;
+  margin-top: 10px;
+  font-family: "sinete", sans-serif;
+}
+.instructionsBtns:hover {
   background-color: white;
   color: black;
   border: 3px solid black;
@@ -35,24 +67,49 @@ body {
 
 
 #modal {
-  background-color: white;
+  background-color: rgb(55, 153, 181);
   z-index: 1;
   display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 #modal2 {
   display: none;
-  background-color: white;
+  background-color: rgb(55, 153, 181);
   z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
 }
 #modal3 {
   display: none;
-  background-color: white;
+  background-color: rgb(55, 153, 181);
   z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 #modal4{
   display: none;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(55, 153, 181);
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 5%;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 .modal-textbox1 {
   display: flex;
@@ -68,7 +125,7 @@ body {
   width: 750px;
   position: absolute;
   top: 8%;
-  left: 10%; /* remember to change this back to 30px */
+  left: 30%;
   padding: 10px;
 
 }
@@ -99,11 +156,12 @@ body {
   color: black;
   font-size: 23px;
   box-shadow: 30px 5px 5px black;
-  height: auto;
-  width: 550px;
+  height: fit-content;
+  width: 650px;
   position: absolute;
   top: 8%;
-  left: 10%;
+  left: 30%;
+  bottom: 5%;
   padding: 10px;
 }
 .modal-textbox:hover {
@@ -134,10 +192,7 @@ body {
   100% { transform: translateY(0); }
 }
 
-
-
 .coinToss {
-  padding: 20px;
   background-color: white;
   border-radius: 20px;
 }
@@ -155,7 +210,12 @@ body {
   border: 3px dotted black;
   text-align: center;
   border-radius: 20px;
+  width: fit-content;
+  position: relative;
+  left: 20%;
+  padding: 10px;
 }
+
 #coinVid{
   height: 200px;
   width: 300px;
@@ -170,10 +230,6 @@ body {
   transform-style: preserve-3d;
   transform-origin: center;
   transition: transform 1s ease-in-out;
-}
-
-.flipped {
-  transform: rotateX(180deg);
 }
 
 #coin-flip{
@@ -233,3 +289,168 @@ body {
 }
 
 
+.scoreboard {
+  grid-area: scoreboard;
+  align-content: center;
+  justify-self: center;
+  justify-content: space-between;
+  border: 10px solid rgb(233, 139, 84);
+  background-color: rgb(244, 207, 152);
+  border-radius: 20px;
+  display: flex;
+  width: 700px;
+  height: 200px;
+  padding: 20px; 
+  align-self: center;
+}
+.scoreboard > header {
+  grid-area: ttt;
+  font-weight: 400;
+  font-size: 40px;
+  font-size: 28px;
+  justify-self: center;
+  align-self: center;
+  padding-left: 5px;
+  text-align: center;
+} 
+.scoreboard > div {
+  font-size: 30px;
+  text-align: center;
+  align-items: center;
+  align-items: center;
+}
+div > h4 {
+  margin-bottom: -15px;
+}
+#p1wins {
+  grid-area: p1wins;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: rgb(149, 148, 165);
+  color: black;
+  text-align: center;
+  height: 150px;
+  width: 125px;
+  margin: 10px;
+  justify-self: center;
+  align-self: center;
+}
+#ties {
+  grid-area: tie;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: rgb(149, 148, 165);
+  color: black;
+  text-align: center;
+  height: 150px;
+  width: 125px;
+  margin: 10px;
+  justify-self: center;
+  align-self: center;
+}
+#p2wins {
+  grid-area: p2wins;
+  border-radius: 5px;
+  border: 2px solid black;
+  background-color: rgb(149, 148, 165);
+  color: black;
+  text-align: center;
+  height: 150px;
+  width: 125px;
+  margin: 10px;
+  justify-self: center;
+  align-self: center;
+} 
+#p1wins > h1 {
+  margin-top: 5px;
+}
+#p1wins > h4 {
+  margin-top: 5px;
+}
+#p2wins > h1 {
+  margin-top: 5px;
+}
+#p2wins > h4 {
+  margin-top: 5px;
+}
+#ties > h1 {
+  margin-top: 5px;
+}
+#ties > h4 {
+  margin-top: 30px;
+}
+.game {
+  grid-area: gameh1;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  align-self: center;
+  background: radial-gradient(circle, rgb(89, 92, 122) 0%, rgba(0, 0, 0, 0.722) 100%);
+  border: 1px solid rgb(233, 139, 84);
+  border-radius: 20px;
+  justify-self: center;
+  padding: 5px;
+}
+.game:hover {
+  background: radial-gradient(circle, rgb(89, 92, 122) 0%, rgb(0, 0, 0) 100%);
+}
+
+.board-grid {
+  grid-area: board;
+  align-self: center;
+  justify-self: center;
+  border: 5px solid rgb(233, 139, 84);
+  border-radius: 12px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px;
+  height: fit-content;
+  width: fit-content;
+  color: white;
+  border-radius: 10px;
+  border: 50px solid rgb(244, 207, 152);;
+}
+.grid-item {
+  background-color: rgb(176, 184, 198);
+  border: 2px solid rgb(233, 139, 84);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+}
+#results {
+  text-align: center;
+  grid-area: playagain;
+}
+#gameovermsg {
+  text-align: center;
+  color: rgb(233, 139, 84);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+  margin: 0;
+}
+#restart {
+  background-color: rgb(127, 123, 169);
+  box-shadow: 10px 5px 5px rgb(233, 139, 84);
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 35px;
+  width: auto;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: normal;
+  margin-bottom: 10px;
+  }
+#restart:hover {
+  background-color: rgb(233, 139, 84);
+  box-shadow: 10px 5px 5px rgb(85, 98, 139);
+  cursor: pointer;
+}

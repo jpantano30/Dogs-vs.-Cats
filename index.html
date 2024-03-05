@@ -9,10 +9,6 @@
   <link rel="stylesheet" href="https://use.typekit.net/oui3bwg.css">
 </head>
 <body>
-  <div class="InstBtns">
-    <button class="iBtns" id="instructions">Instructions</button>
-    <button class="iBtns" id="close-instr">Close Instructions</button>
-  </div>
   <div class="modal-container" id="modal">
     <div class="modal-textbox1"> 
       <h1>Dogs vs. Cats</h1>
@@ -50,6 +46,10 @@
       <h2>Enjoy the game and may the best player win!</h2>
       <button class="continue" type="button" id="cont-1">Continue</button>
     </div>
+    <div class="instBtns">
+      <button class="instructionsBtns" id="instructions">Instructions</button>
+      <button class="close-instr" id="close-instr">Close Instructions</button>
+    </div>
   </div>
 
   <div class="modal-container" id="modal2">
@@ -67,23 +67,32 @@
       </div> 
       <button class="continue" type="button" id="cont-2">Continue</button>
     </div>
+    <div class="instBtns">
+      <button class="instructionsBtns" id="instructions">Instructions</button>
+      <button class="close-instr" id="close-instr">Close Instructions</button>
+    </div>
   </div>
 <!-- change player 1 and player 2 to the input names  -->
   <div class="modal-container" id="modal3">
     <div class="modal-textbox"> 
       <h1>Dogs vs. Cats</h1> 
-      <p>Reminder: Player 1 chooses heads or tails.<p>
+      <p>Reminder: Player 1 chooses heads or tails on the next screen.<p>
       <h3>Enter your username:</h3>
       <div id="username"> 
-        <label for="insrtname1">Player 1:</label>
-        <input type="text" id="insrtname1">
-        <br>
-        <label id="p2NameLabel" for="insrtname2">Player 2:</label>
-        <input type="text" id="insrtname2">
+          <label for="insrtname1">Player 1:</label>
+          <input type="text" id="insrtname1">
+          <br>
+          <label for="insrtname2">Player 2:</label>
+          <input type="text" id="insrtname2">
       </div>
       <button class="continue" id="cont-3" type="button">Continue</button>
     </div>
+    <div class="instBtns">
+      <button class="instructionsBtns" id="instructions">Instructions</button>
+      <button class="close-instr" id="close-instr">Close Instructions</button>
+    </div>
   </div>
+  
   <div class="modal-container" id="modal4">
     <div class="modal-textbox"> 
       <div class="coinToss">
@@ -95,30 +104,77 @@
         <p id="resultMeaning">If heads, player one moves first with the dog character.
         <br>
         If tails, player one plays second with the cat character.</p>
-
         <div id="coin-choice">
-          <p>Player 1 click on either heads or tails.<p>
+          <h3 id='inputname'> name </h3>
+          <p>click on either heads or tails.<p>
           <div id="coin-choice-btns">
             <button class="coinBtn" id="headsBtn"><img class="coinImg" alt="heads" id="heads" src="/other/heads.png"></button>
             <button class="coinBtn" id="tailsBtn"><img class="coinImg" id="tails" alt="tails" src="/other/tails.png"></button>
           </div>
         </div>
-
         <div id="coin-flip"> 
           <h3>Click the coin below to toss!</h3>
-          <button id="btnFlip"><div id="flip-animation" class="coinFlipAnimation">
-            <img id="coin" class="coinImg" alt="coin" src="/other/heads.png">
-          </div></button>
+          <button id="btnFlip">
+            <div id="flip-animation" class="coinFlipAnimation">
+              <img id="coin" class="coinImg" alt="coin" src="/other/heads.png">
+            </div>
+          </button>
           <h2 id="result"></h2>
         </div>
         <button class="continue" type="button" id="playGameBtn">PLAY GAME!</button>
         <button class="continue" type="button" id="resetCoinToss">Reset Coin Toss</button>
       </div>
     </div>
+    <div class="instBtns">
+      <button class="instructionsBtns" id="instructions">Instructions</button>
+      <button class="close-instr" id="close-instr">Close Instructions</button>
+    </div>
   </div>
 
+  <div class="instBtns">
+    <button class="instructionsBtns" id="instructions">Instructions</button>
+    <button class="close-instr" id="close-instr">Close Instructions</button>
+  </div> 
 
+  <section class="scoreboard">
+    <header>
+        <h1>DOGS <br> vs. <br>CATS</h1>
+    </header>
+    <div id="p1wins">
+        <h4><span id="plone">Player 1</span> WINS</h4>
+        <h1>0</h1>
+    </div>
+    <div id="ties">
+        <h4>TIES</h4>
+        <h1>0</h1>
+    </div>
+    <div id="p2wins">
+        <h4><span id="pltwo">Player 2</span> WINS</h4>
+        <h1>0</h1>
+    </div>
+  </section>
 
+  
+    <h1 class="game">DOGS VS. CATS</h1>
+
+    <div class="board-grid">
+        <div class="grid-container" id="game-board"> 
+            <div class="grid-item" id="0"></div>
+            <div class="grid-item" id="1"></div>
+            <div class="grid-item" id="2"></div>
+            <div class="grid-item" id="3"></div>
+            <div class="grid-item" id="4"></div>
+            <div class="grid-item" id="5"></div>
+            <div class="grid-item" id="6"></div>
+            <div class="grid-item" id="7"></div>
+            <div class="grid-item" id="8"></div>
+        </div>
+    </div>
+
+    <section id="results">
+        <p id="gameovermsg"></p>
+        <button id="restart">PLAY AGAIN</button>
+    </section>
 
 
   
