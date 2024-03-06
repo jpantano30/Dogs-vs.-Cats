@@ -1,5 +1,15 @@
-<!-- # Dogs-vs.-Cats
+# Dogs-vs.-Cats
 A game of tic-tac-toe with a coin toss to decide who starts the game off.
+
+#
+Technologies Used: 
+HTML
+CSS
+JavaScript
+Flickr
+Adobe Stock 
+Adobe Fonts
+Instagram 
 
 ## Welcome to Tic-Tac-Toe Game
 
@@ -31,4 +41,4 @@ A game of tic-tac-toe with a coin toss to decide who starts the game off.
 
 ### Have Fun!
 
-Enjoy the game and may the best player win! -->
+Enjoy the game and may the best player win! 
