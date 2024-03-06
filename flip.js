@@ -18,6 +18,10 @@ const result = document.getElementById('result')
 const headsBtn = document.getElementById('headsBtn')
 const tailsBtn = document.getElementById('tailsBtn')
 
+
+// variable to track if its a one player game 
+let onePlayerGame = false
+
 //event listeners 
 headsBtn.addEventListener('click', () => chooseSide('heads'))
 tailsBtn.addEventListener('click', () => chooseSide('tails'))
@@ -25,9 +29,44 @@ document.getElementById('btnFlip').addEventListener('click', flipCoin)
 document.getElementById('playGameBtn').addEventListener('click', playGame)
 
 
+// game variable 
+const pOneWins = document.querySelector('#p1wins h1')
+const pTwoWins = document.querySelector('#p2wins h1')
+const ties = document.querySelector('#ties h1')
+const resMsg = document.querySelector('#gameovermsg')
+const restart = document.getElementById('restart')
+
+const LOOKUP = {
+  '1': '/other/PaisleyFace1.png', 
+  '-1':'/other/cat2.png'
+}
+
+const winningCombos = [
+  [0, 1, 2],
+  [0, 4, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 4, 6],
+  [2, 5, 8],
+  [3, 4, 5],
+  [6, 7, 8]
+]
+let board 
+let turn
+let winner
+let playerOneScore = 0
+let playerTwoScore = 0
+let tie = 0
+
+const boardEl = document.getElementById('game-board')
+
+// changes the modal 3 to only allow input for 1 player and changes oneplayer game to true when pressed 
 onePlayerBtn.addEventListener('click', () => {
-  usernameDiv.innerHTML = `<label for="insrtname1">Player 1:</label>
-  <input type="text" id="insrtname1">`
+  const label2 = document.querySelector('label[for="insrtname2"]')
+  const input2 = document.getElementById('insrtname2')
+  label2.style.display = 'none'
+  input2.style.display = 'none'
+  onePlayerGame = true
 })
 
 function handleCoinChoice(event) {
@@ -46,7 +85,7 @@ function chooseSide(side) {
 }
 
 let randomResult
-let wonCoinToss = false 
+let coinTossResult
 function flipCoin() {
   console.log(chosenSide)
 
@@ -83,31 +122,64 @@ function flipCoin() {
       }
       coin.src = `/other/${randomResult}.png`
 
+      coinTossResult = randomResult
+
+
       // displays a message indicating whether the user wins or loses based on their chosen side
       if (randomResult === chosenSide) {
         result.innerText = 'You Win!'
-        wonCoinToss = true
       } else {
         result.innerText = 'You Lose!'
-        wonCoinToss = false
       }
       //stops the interval
       clearInterval(flipInterval)
     }
   }, 100)
 }
-
+const playerOneScoreBoard = document.getElementById('plone')
+const playerTwoScoreBoard = document.getElementById('pltwo')
 function playGame() {
   console.log(chosenSide)
+  
+  let playerOne = player1Name.value
+  let playerTwo = player2Name.value
+
   if (chosenSide === '') {
     alert('Please choose heads or tails before playing.')
     return
   }
 
-  if (wonCoinToss) {
-    alert(`You win the toss! You move first with the dog character.`)
-  } else {
+  if (coinTossResult === chosenSide) {
+    alert(`You won the toss! You move first with the dog character.`)
+    if (!onePlayerGame){
+      playerOneScoreBoard.innerText = playerOne
+      playerTwoScoreBoard.innerText = playerTwo
+    } else if (onePlayerGame) {
+      playerOneScoreBoard.innerText = playerOne
+      playerTwoScoreBoard.innerText = 'CAT'
+    }
+   
+    // check if one player game and whose turn. Used setTimeout to slow down the random response for the computer
+    if (onePlayerGame && turn === -1) {
+      setTimeout(makeComputerMove, 500)
+    }
+  } else if (coinTossResult !== chosenSide) {
+    console.log("Player 1 name:", playerOne)
+
     alert(`You lost the toss! You play second with the cat character.`)
+    playerTwoScoreBoard.innerText = playerOne
+
+    if (!onePlayerGame){
+      playerOneScoreBoard.innerText = playerTwo
+    } else if (onePlayerGame){
+      // having a problem if i select 1 player cant play after the computer makes a move
+      console.log("Player 1 name:", playerOne)
+      playerOneScoreBoard.innerText = 'DOG'
+    }
+    if (onePlayerGame && turn === 1) {
+      console.log("Calling makeComputerMove after losing the toss");
+      setTimeout(makeComputerMove, 500)
+    }
   }
 
   modal4.style.display = 'none'
@@ -168,9 +240,7 @@ closeInstructions.forEach(btn => {
 })
 
 // reset the coin toss box back to both coins showing
-document.getElementById('resetCoinToss').addEventListener('click', () => { 
-  resetCoinBox()
-})
+document.getElementById('resetCoinToss').addEventListener('click', resetCoinBox)
 
 function resetCoinBox() {
   console.clear()
@@ -186,8 +256,10 @@ document.getElementById('resetCoinToss').addEventListener('click', resetCoinBox)
 
 
 function resetUsernameDiv () {
-  usernameDiv.innerHTML = `<label for="insrtname1">Player 1:</label>
-  <input type="text" id="insrtname1"> <br> <label id="p2NameLabel" for="insrtname2">Player 2:</label> <input type="text" id="insrtname2">`
+  const label2 = document.querySelector('label[for="insrtname2"]')
+  const input2 = document.getElementById('insrtname2')
+  label2.style.display = ''
+  input2.style.display = ''
 }
 
 
@@ -195,42 +267,12 @@ resetCoinBox()
 
 
 
-const pOneWins = document.querySelector('#p1wins h1')
-const pTwoWins = document.querySelector('#p2wins h1')
-const ties = document.querySelector('#ties h1')
-const resMsg = document.querySelector('#gameovermsg')
-const restart = document.getElementById('restart')
 
-
-
-const LOOKUP = {
-  '1': '/other/PaisleyFace1.png', 
-  '-1':'/other/cat2.png'
-}
-
-const winningCombos = [
-  [0, 1, 2],
-  [0, 4, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 4, 6],
-  [2, 5, 8],
-  [3, 4, 5],
-  [6, 7, 8]
-]
-let board
-let turn
-let winner
-let playerOneScore = 0
-let playerTwoScore = 0
-let tie = 0
-
-const boardEl = document.getElementById('game-board')
 
 boardEl.addEventListener('click', handleClick)
 restart.addEventListener('click', init)
 
-init();
+init()
 function init(){
   board = [null, null, null, null, null, null, null, null, null]
   turn = 1
@@ -240,14 +282,46 @@ function init(){
 }
 
 
-
 function handleClick(event){
-  if (board[parseInt(event.target.id)] || winner) return;
-  board[parseInt(event.target.id)] = turn
-  turn *= -1
-  winner = checkWinner()
-  render()
+  console.log('handleClick called');
+  console.log('Turn before player move:', turn)
+  
+  
+  if (board[parseInt(event.target.id)] !== null || winner) {
+    console.log("Invalid move:", event.target.id, "Current turn:", turn);
+    return
+  }
+
+  board[parseInt(event.target.id)] = turn;
+  turn *= -1;
+  winner = checkWinner();
+  render();
+
+  // if one player game - computers turn - random move
+  if (onePlayerGame && turn === -1 && !winner) {
+    console.log("Calling makeComputerMove after player's move");
+    setTimeout(makeComputerMove, 500);
+  }
 }
+
+function makeComputerMove() {
+  console.log('makeComputerMove called')
+  const emptySquares = board.reduce((acc, val, index) => {
+    if (val === null) acc.push(index)
+    return acc
+  }, [])
+
+  if (emptySquares.length > 0) {
+    const randomIndex = Math.floor(Math.random() * emptySquares.length)
+    const computerMove = emptySquares[randomIndex]
+    board[computerMove] = turn
+    turn *= -1 
+    winner = checkWinner()
+    render()
+    console.log('Turn after computer move:', turn);
+  }
+}
+
 function render() {
   for (let i = 0; i < board.length; i++) {
           const sq = document.getElementById(i)
@@ -278,3 +352,7 @@ function checkWinner (){
   }
   return null
 }
+
+
+
+

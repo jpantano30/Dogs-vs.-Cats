@@ -76,6 +76,7 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 #modal2 {
@@ -126,6 +127,7 @@ body {
   position: absolute;
   top: 8%;
   left: 10%;
+  bottom: 5%;
   padding: 10px;
 
 }
