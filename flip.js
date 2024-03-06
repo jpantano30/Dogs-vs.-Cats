@@ -192,3 +192,89 @@ function resetUsernameDiv () {
 
 
 resetCoinBox()
+
+
+
+const pOneWins = document.querySelector('#p1wins h1')
+const pTwoWins = document.querySelector('#p2wins h1')
+const ties = document.querySelector('#ties h1')
+const resMsg = document.querySelector('#gameovermsg')
+const restart = document.getElementById('restart')
+
+
+
+const LOOKUP = {
+  '1': '/other/PaisleyFace1.png', 
+  '-1':'/other/cat2.png'
+}
+
+const winningCombos = [
+  [0, 1, 2],
+  [0, 4, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 4, 6],
+  [2, 5, 8],
+  [3, 4, 5],
+  [6, 7, 8]
+]
+let board
+let turn
+let winner
+let playerOneScore = 0
+let playerTwoScore = 0
+let tie = 0
+
+const boardEl = document.getElementById('game-board')
+
+boardEl.addEventListener('click', handleClick)
+restart.addEventListener('click', init)
+
+init();
+function init(){
+  board = [null, null, null, null, null, null, null, null, null]
+  turn = 1
+  winner = null
+  render()
+  resMsg.innerText = ''
+}
+
+
+
+function handleClick(event){
+  if (board[parseInt(event.target.id)] || winner) return;
+  board[parseInt(event.target.id)] = turn
+  turn *= -1
+  winner = checkWinner()
+  render()
+}
+function render() {
+  for (let i = 0; i < board.length; i++) {
+          const sq = document.getElementById(i)
+          sq.innerHTML = board[i] ? `<img src="${LOOKUP[board[i]]}" alt="${LOOKUP[board[i]]}">` : ''
+  }
+  if (winner === 'Tie') {
+      resMsg.innerText = "It's a tie"
+      ties.innerText = `${tie}`
+  }
+  if (winner === 1 || winner === -1) {
+  resMsg.innerText = `${`${LOOKUP[winner]} Wins!`} Wins!`
+  pOneWins.innerText = `${playerOneScore}`
+  pTwoWins.innerText = `${playerTwoScore}`
+  }
+}
+function checkWinner (){
+  for (let i = 0; i < winningCombos.length; i++){
+      sum = Math.abs(board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]])
+      if (sum === 3) {
+          if (board[winningCombos[i][0]] === 1) playerOneScore += 1
+          if (board[winningCombos[i][0]] === -1) playerTwoScore += 1
+          return board[winningCombos[i][0]]
+      }
+  }
+  if (!board.includes(null)) {
+      tie += 1
+       return 'Tie'
+  }
+  return null
+}
