@@ -78,7 +78,6 @@ body {
   border: 3px solid black;
 }
 
-
 #modal {
   background-color: rgb(55, 153, 181);
   z-index: 1;
@@ -160,7 +159,6 @@ body {
 .modal-textbox1 > h2 {
   text-align: center;
 }
-
 
 .modal-textbox {
   background-color: white;
@@ -303,7 +301,6 @@ body {
   background-color: rgb(52, 126, 55);
 }
 
-
 .scoreboard {
   grid-area: scoreboard;
   align-content: center;
@@ -440,6 +437,18 @@ div > h4 {
   font-style: normal;
   font-size: 80px;
 }
+.grid-container2 {
+  display: grid;
+  grid-template-columns: 120px 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px 120px;
+  height: fit-content;
+  width: fit-content;
+  color: white;
+  border-radius: 10px;
+  border: 50px solid rgb(244, 207, 152);
+}
+
+
 #results {
   text-align: center;
   grid-area: playagain;
