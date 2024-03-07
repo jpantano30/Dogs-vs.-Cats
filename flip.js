@@ -159,7 +159,7 @@ function playGame() {
       playerTwoScoreBoard.innerText = 'CAT'
     }
    
-    // check if one player game and whose turn. Used setTimeout to slow down the random response for the computer
+    // check if 1 player game and whose turn. Used setTimeout to slow down the random response for the computer
     if (onePlayerGame && turn === -1) {
       setTimeout(makeComputerMove, 500)
     }
@@ -239,11 +239,17 @@ closeInstructions.forEach(btn => {
   })
 })
 
+// reset game
+document.querySelectorAll('#resetPage').forEach(btn => {
+  btn.addEventListener('click', () => {
+    window.location.reload()
+  })
+})
+
 // reset the coin toss box back to both coins showing
 document.getElementById('resetCoinToss').addEventListener('click', resetCoinBox)
 
 function resetCoinBox() {
-  console.clear()
   const coinChoiceBtns = document.getElementById('coin-choice-btns')
   coinChoiceBtns.innerHTML = `<button class="coinBtn" id="headsBtn"><img class="coinImg" alt="heads" id="heads" src="/other/heads.png"></button>
   <button class="coinBtn" id="tailsBtn"><img class="coinImg" id="tails" alt="tails" src="/other/tails.png"></button>`
@@ -254,7 +260,6 @@ function resetCoinBox() {
 
 document.getElementById('resetCoinToss').addEventListener('click', resetCoinBox)
 
-
 function resetUsernameDiv () {
   const label2 = document.querySelector('label[for="insrtname2"]')
   const input2 = document.getElementById('insrtname2')
@@ -262,15 +267,16 @@ function resetUsernameDiv () {
   input2.style.display = ''
 }
 
-
 resetCoinBox()
 
-
-
-
-
 boardEl.addEventListener('click', handleClick)
-restart.addEventListener('click', init)
+restart.addEventListener('click', () => {
+  init()
+  console.log(coinTossResult)
+  if (coinTossResult !== chosenSide){
+    makeComputerMove()
+  }
+})
 
 init()
 function init(){
@@ -292,15 +298,19 @@ function handleClick(event){
     return
   }
 
-  board[parseInt(event.target.id)] = turn;
-  turn *= -1;
-  winner = checkWinner();
-  render();
+  board[parseInt(event.target.id)] = turn
+  winner = checkWinner()
+  render()
 
   // if one player game - computers turn - random move
   if (onePlayerGame && turn === -1 && !winner) {
-    console.log("Calling makeComputerMove after player's move");
-    setTimeout(makeComputerMove, 500);
+    console.log("Calling makeComputerMove after player's move")
+    setTimeout(makeComputerMove, 500)
+  }
+
+  if (!winner){
+    turn *= -1
+    console.log('Turn after player move:', turn)
   }
 }
 
@@ -310,6 +320,7 @@ function makeComputerMove() {
     if (val === null) acc.push(index)
     return acc
   }, [])
+  console.log('Empty Squares:', emptySquares)
 
   if (emptySquares.length > 0) {
     const randomIndex = Math.floor(Math.random() * emptySquares.length)
@@ -318,7 +329,7 @@ function makeComputerMove() {
     turn *= -1 
     winner = checkWinner()
     render()
-    console.log('Turn after computer move:', turn);
+    console.log('Turn after computer move:', turn)
   }
 }
 
@@ -329,12 +340,12 @@ function render() {
   }
   if (winner === 'Tie') {
       resMsg.innerText = "It's a tie"
-      ties.innerText = `${tie}`
+      ties.innerText = tie
   }
   if (winner === 1 || winner === -1) {
   resMsg.innerText = `${`${LOOKUP[winner]} Wins!`} Wins!`
-  pOneWins.innerText = `${playerOneScore}`
-  pTwoWins.innerText = `${playerTwoScore}`
+  pOneWins.innerText = playerOneScore
+  pTwoWins.innerText = playerTwoScore
   }
 }
 function checkWinner (){
@@ -352,7 +363,6 @@ function checkWinner (){
   }
   return null
 }
-
 
 
 
