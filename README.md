@@ -87,9 +87,7 @@ Enjoy the game and may the best player win!
    <li> Building the puzzle as part of keeping score and to win the tournament </li>
    <li>Giving the game an easy, medium, and hard choice for when playing against the computer.</li>
    <li>Use an API and/or try Firebase.</li>
-
-  
-<details> 
+</details>
 
 #
 
