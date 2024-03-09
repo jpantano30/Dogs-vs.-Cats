@@ -125,9 +125,15 @@ Enjoy the game and may the best player win!
 <details> 
 <summary> Approach </summary>
  <ul> 
-  <li>TBD</li>
-  <li></li>
-  <li></li>
+  <li>I started with the HTML structure, adding modals, buttons, and the game board.</li>
+  <li>I then applied CSS styling. I created the game board grid structure.</li>
+  <li>The game logic is implemented in JavaScript.</li>
+  <li>I used event listeners for buttons, input, and making moves on the board. I collected player names and choices for one or two players, as well as the board size. I used HTML elements to create and update the game board dynamically. I created functionality to reset the coin toss, restart the game, and reset the entire page</li>
+  <li>I implemented a coin toss, allowing players to choose heads or tails. The result is determined randomly, and the game state is updated accordingly.</li>
+  <li>I defined winning combinations and implemented a function to check for a winner or a tie after each move.</li>
+  <li>Scores for each player are tracked, and I implemented a function to update the scoreboard based on the game state. </li>
+  <li>For one-player games, I created a function to simulate the computer making a move after the player's move. </li>
+  <li>The user interface is updated dynamically based on the game state, with messages displayed for coin toss results, game outcomes, and tie situations.</li>
  </ul>
 </details>
 
