@@ -3,9 +3,6 @@ A game of tic-tac-toe with a coin toss to decide who starts the game off.
 
 # 
 
-I made this game to practice my JavaScript skills and chose this game because I felt like it was something id be able to understand and added some of my own flair by using images of my dog and of a cat.
-
-#
 
 #### Technologies used: 👩‍💻
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -133,4 +130,9 @@ Enjoy the game and may the best player win!
   <li></li>
  </ul>
 </details>
+
+#
+
+I made this game to practice my JavaScript skills and chose this game because I felt like it was something id be able to understand and added some of my own flair by using images of my dog and of a cat.
+
 
