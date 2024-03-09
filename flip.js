@@ -1,4 +1,5 @@
-        // Variables // 
+document.addEventListener('DOMContentLoaded', function () {
+// Variables // 
 
 // used to display instructions and collect user names
 const modal1 = document.getElementById('modal')
@@ -13,7 +14,7 @@ const closeInstructions = document.querySelectorAll('.close-instr')
 
 // one or two player game buttons 
 const onePlayerBtn = document.getElementById('onePlayer')
-const twoPlayerBtn = document.getElementById('twoPlayer')
+// const twoPlayerBtn = document.getElementById('twoPlayer')
 
 // 3x3 or 4x4 size board btns 
 const threeBtn = document.getElementById('three')
@@ -27,7 +28,7 @@ let player2Name = document.getElementById('insrtname2')
 const playerOneScoreBoard = document.getElementById('plone')
 const playerTwoScoreBoard = document.getElementById('pltwo')
 
-const usernameDiv = document.getElementById('username')
+// const usernameDiv = document.getElementById('username')
 
 // initalize variable to track which side the user picked (heads or tails)
 let chosenSide = ''
@@ -36,7 +37,6 @@ let chosenSide = ''
 let randomResult
 let coinTossResult
 
-// coin toss 
 const coin = document.getElementById('coin')
 const result = document.getElementById('result')
 const headsBtn = document.getElementById('headsBtn')
@@ -95,6 +95,10 @@ tailsBtn.addEventListener('click', () => chooseSide('tails'))
 document.getElementById('btnFlip').addEventListener('click', flipCoin)
 document.getElementById('playGameBtn').addEventListener('click', () => {
   chooseBoardSize()
+  // document.getElementById('.instBtns').style.removeProperty("position")
+  // document.getElementById('.instBtns').style.removeProperty("top")
+  // document.getElementById('.instBtns').style.removeProperty("left")
+
 }) 
 
 // changes the modal 3 to only allow input for 1 player and changes oneplayer game to true when pressed 
@@ -156,7 +160,7 @@ closeInstructions.forEach(btn => {
   })
 })
 
-// reset game
+// reset page
 document.querySelectorAll('#resetPage').forEach(btn => {
   btn.addEventListener('click', () => {
     window.location.reload()
@@ -169,9 +173,11 @@ document.getElementById('resetCoinToss').addEventListener('click', resetCoinBox)
 boardEl.addEventListener('click', handleClick)
 restart.addEventListener('click', () => {
   init()
+  if (onePlayerGame) {
   console.log(coinTossResult)
-  if (coinTossResult !== chosenSide){
-    makeComputerMove()
+    if (coinTossResult !== chosenSide){
+      makeComputerMove()
+    }
   }
 })
 
@@ -182,7 +188,7 @@ restart.addEventListener('click', () => {
 function chooseBoardSize() {
   if (boardSize === 4) {
     // Redirect to a different HTML page
-    window.location.href = '/4x4/index.html'
+    window.location.href = '/4x4/four.html'
   } else if (boardSize === 3) {
     console.log('3x3 board size chosen')
     playGame()
@@ -247,9 +253,9 @@ function flipCoin() {
 
       // displays a message indicating whether the user wins or loses based on their chosen side
       if (randomResult === chosenSide) {
-        result.innerText = 'You Win!'
+        result.innerText = 'You won the toss! You move first with the dog character.'
       } else {
-        result.innerText = 'You Lose!'
+        result.innerText = 'You lost the toss! You play second with the cat character.'
       }
       //stops the interval
       clearInterval(flipInterval)
@@ -270,23 +276,23 @@ function playGame() {
   }
 
   if (coinTossResult === chosenSide) {
-    alert(`You won the toss! You move first with the dog character.`)
+    console.log('won the toss')
     if (!onePlayerGame){
       playerOneScoreBoard.innerText = playerOne
       playerTwoScoreBoard.innerText = playerTwo
     } else if (onePlayerGame) {
       playerOneScoreBoard.innerText = playerOne
       playerTwoScoreBoard.innerText = 'CAT'
+      if (onePlayerGame && turn === -1) {
+        setTimeout(makeComputerMove, 500)
+      }
     }
-   
-    // check if 1 player game and whose turn. Used setTimeout to slow down the random response for the computer
-    if (onePlayerGame && turn === -1) {
-      setTimeout(makeComputerMove, 500)
-    }
-  } else if (coinTossResult !== chosenSide) {
-    console.log("Player 1 name:", playerOne)
 
-    alert(`You lost the toss! You play second with the cat character.`)
+    // check if 1 player game and whose turn. Used setTimeout to slow down the random response for the computer
+
+  } else if (coinTossResult !== chosenSide) {
+    console.log('lost the toss')
+    console.log("Player 1 name:", playerOne)
     playerTwoScoreBoard.innerText = playerOne
 
     if (!onePlayerGame){
@@ -357,17 +363,16 @@ function handleClick(event){
   render()
   console.log('winner:', winner)
 
-  // if one player game - computers turn - random move
-  if (onePlayerGame && turn === -1 && !winner) {
-    console.log("Calling makeComputerMove after player's move")
-    setTimeout(makeComputerMove, 500)
-  }
-
   if (!winner){
     turn *= -1
     console.log('Turn after player move:', turn)
     console.log('winner:', winner)
   }
+    // if one player game - computers turn - random move
+    if (onePlayerGame && turn === -1 && !winner) {
+      console.log("Calling makeComputerMove after player's move")
+      setTimeout(makeComputerMove, 500)
+    }
 }
 console.log('winner:', winner)
 // makes a random move for the computer in one-player mode
@@ -396,8 +401,8 @@ function makeComputerMove() {
 function render() {
   console.log('winner:', winner)
   for (let i = 0; i < board.length; i++) {
-          const sq = document.getElementById(i)
-          sq.innerHTML = board[i] ? `<img src="${LOOKUP[board[i]]}" alt="${LOOKUP[board[i]]}">` : ''
+    const sq = document.getElementById(i)
+    sq.innerHTML = board[i] ? `<img src="${LOOKUP[board[i]]}" alt="${LOOKUP[board[i]]}">` : ''
   }
   if (winner === 'Tie') {
     resMsg.style.display = 'block'
@@ -405,8 +410,9 @@ function render() {
     ties.innerText = tie
   }
   if (winner === 1 || winner === -1) {
-    resMsg.style.display = 'none'
+    resMsg.style.display = 'block'
     resMsg.innerText = `We have a WINNER!`
+    console.log(winner)
     pOneWins.innerText = playerOneScore
     pTwoWins.innerText = playerTwoScore
   }
@@ -417,10 +423,17 @@ function render() {
 function checkWinner (){
   console.log('winner:', winner)
   for (let i = 0; i < winningCombos.length; i++){
-      sum = Math.abs(board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]])
+      sum = Math.abs(
+        board[winningCombos[i][0]] + 
+        board[winningCombos[i][1]] + 
+        board[winningCombos[i][2]])
       if (sum === 3) {
-          if (board[winningCombos[i][0]] === 1) playerOneScore += 1
-          if (board[winningCombos[i][0]] === -1) playerTwoScore += 1
+          if (board[winningCombos[i][0]] === 1){
+            playerOneScore += 1
+          } 
+          if (board[winningCombos[i][0]] === -1){
+            playerTwoScore += 1
+          } 
           return board[winningCombos[i][0]]
       }
   }
@@ -433,3 +446,4 @@ function checkWinner (){
 
 
 
+})

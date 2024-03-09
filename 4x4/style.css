@@ -206,14 +206,14 @@ div > h4 {
   background: radial-gradient(circle, rgb(89, 92, 122) 0%, rgb(0, 0, 0) 100%);
 }
 
-.board-grid {
+.board-grid2 {
   grid-area: board;
   align-self: center;
   justify-self: center;
   border: 5px solid rgb(233, 139, 84);
   border-radius: 12px;
 }
-.grid-container {
+.grid-container2 {
   display: grid;
   grid-template-columns: 120px 120px 120px 120px;
   grid-template-rows: 120px 120px 120px 120px;
@@ -223,7 +223,7 @@ div > h4 {
   border-radius: 10px;
   border: 50px solid rgb(244, 207, 152);
 }
-.grid-item {
+.grid-item2 {
   background-color: rgb(176, 184, 198);
   border: 2px solid rgb(233, 139, 84);
   border-radius: 2px;
