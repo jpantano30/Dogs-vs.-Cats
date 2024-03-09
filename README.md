@@ -1,6 +1,12 @@
 # Dogs-vs.-Cats
 A game of tic-tac-toe with a coin toss to decide who starts the game off.
 
+# 
+
+I made this game to practice my JavaScript skills and chose this game because I felt like it was something id be able to understand and added some of my own flair by using images of my dog and of a cat.
+
+#
+
 #### Technologies used: 👩‍💻
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
@@ -70,7 +76,7 @@ Enjoy the game and may the best player win!
 #
 
 <details> 
- <summary> Challenges: </summary>
+ <summary> Challenges & Unsolved Problems: </summary>
     <li>In one player mode, depending on who wins the coin toss, sometimes the computer does not automatically play.</li>
    <li>Problems with 4x4 game functionality.</li>
    <li>I faced numerous challenges with my game and tried making a whole new version. In the second version, the 4x4 functionality works, but I ran out of time trying to fix a problem with updating the scoreboard, so I went back to my original game.</li>
@@ -120,7 +126,7 @@ Enjoy the game and may the best player win!
 
 #
 <details> 
-<summary> Strategies </summary>
+<summary> Approach </summary>
  <ul> 
   <li>TBD</li>
   <li></li>
