@@ -27,6 +27,8 @@ let player2Name = document.getElementById('insrtname2')
 const playerOneScoreBoard = document.getElementById('plone')
 const playerTwoScoreBoard = document.getElementById('pltwo')
 
+
+
 const usernameDiv = document.getElementById('username')
 
 // initalize variable to track which side the user picked (heads or tails)
@@ -88,6 +90,9 @@ const boardEl = document.getElementById('game-board')
 
                      // EVENT LISTENERS // 
 
+
+// threeBtn.addEventListener('click', () => {})
+// fourBtn.addEventListener('click', () => {})
 
 headsBtn.addEventListener('click', () => chooseSide('heads'))
 tailsBtn.addEventListener('click', () => chooseSide('tails'))
@@ -247,9 +252,9 @@ function flipCoin() {
 
       // displays a message indicating whether the user wins or loses based on their chosen side
       if (randomResult === chosenSide) {
-        result.innerText = 'You Win!'
+        result.innerText = 'You won the toss! You move first with the dog character.'
       } else {
-        result.innerText = 'You Lose!'
+        result.innerText = 'You lost the toss! You play second with the cat character.'
       }
       //stops the interval
       clearInterval(flipInterval)

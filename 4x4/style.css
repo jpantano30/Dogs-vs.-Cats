@@ -6,7 +6,7 @@ html, body {
   margin: 0;
 }
 body {
-  background-color: rgb(55, 153, 181);
+  background-image: url(/other/rainingcatsanddogs.jpg);
   width: 100%;
   height: 100%;
   font-family: "sinete", sans-serif;
@@ -34,6 +34,7 @@ body {
   margin-left: 10px;
 }
 
+
 .close-instr {
   background-color: black;
   color: white;
@@ -48,10 +49,15 @@ body {
   color: black;
   border: 3px solid black;
 }
-
+.close-instr > a {
+  text-decoration: none;
+  color: white;
+}
+.close-instr > a:hover {
+  color: black;
+}
 .instructionsBtns {
   background-color: black;
-  color: white;
   border-radius: 10px;
   border: 2px solid white;
   font-size: 25px;
@@ -60,9 +66,16 @@ body {
 }
 .instructionsBtns:hover {
   background-color: white;
-  color: black;
   border: 3px solid black;
 }
+.instructionsBtns > a {
+  text-decoration: none;
+  color: white;
+}
+.instructionsBtns > a:hover {
+  color: black; 
+}
+
 #resetPage {
   background-color: black;
   color: white;
@@ -77,228 +90,12 @@ body {
   color: black;
   border: 3px solid black;
 }
-
-#modal {
-  background-color: rgb(55, 153, 181);
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
+#resetPage > a{
+  text-decoration: none;
+  color: white;
 }
-
-#modal2 {
-  display: none;
-  background-color: rgb(55, 153, 181);
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-}
-#modal3 {
-  display: none;
-  background-color: rgb(55, 153, 181);
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-#modal4{
-  display: none;
-  background-color: rgb(55, 153, 181);
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 5%;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
-.modal-textbox1 {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 20px;
-  border: 5px solid black;
-  justify-content: center;
+#resetPage > a:hover{
   color: black;
-  font-size: 23px;
-  box-shadow: 30px 5px 5px black;
-  height: 820px;
-  width: 750px;
-  position: absolute;
-  top: 8%;
-  left: 10%;
-  bottom: 5%;
-  padding: 10px;
-
-}
-.modal-textbox1 > h1 {
-  margin-top: -15px;
-  text-align: center;
-  margin-bottom: -30px;
-}
-.modal-textbox1 > h3 {
-  text-align: center;
-  margin-bottom: -10px;
-}
-.modal-textbox1 > button {
-  align-self: center;
-  margin-top: 0;
-}
-.modal-textbox1 > h2 {
-  text-align: center;
-}
-
-.modal-textbox {
-  background-color: white;
-  border-radius: 20px;
-  border: 5px solid black;
-  text-align: center;
-  justify-content: center;
-  color: black;
-  font-size: 23px;
-  box-shadow: 30px 5px 5px black;
-  height: fit-content;
-  width: 650px;
-  position: absolute;
-  top: 8%;
-  left: 10%;
-  bottom: 5%;
-  padding: 10px;
-}
-.modal-textbox:hover {
-  box-shadow: 30px 10px 10px whitesmoke; 
-} 
-
-#resultMeaning {
-  text-align: left;
-}
-
-.coinBtn {
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  background-color: inherit;
-  transform-origin: bottom;
-}
-
-.coinBtn:active {
-  transform: translateY(4px);
-}
-.coinBtn:hover {
-  animation: bounce 1s 1 ease;
-}
-@keyframes bounce {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
-}
-
-.coinToss {
-  background-color: white;
-  border-radius: 20px;
-}
-.coinToss > h1 {
-  margin-top: 0;
-  margin-bottom: -30px;
-}
-
-.coinImg {
-  width: 100px;
-  height: 100px;
-}
-
-#coin-choice {
-  border: 3px dotted black;
-  text-align: center;
-  border-radius: 20px;
-  width: fit-content;
-  position: relative;
-  left: 20%;
-  padding: 10px;
-}
-
-#coinVid{
-  height: 200px;
-  width: 300px;
-}
-
-.coinFlipAnimation {
-  position: relative;
-  perspective: 1000px;
-}
-
-#flip-animation {
-  transform-style: preserve-3d;
-  transform-origin: center;
-  transition: transform 1s ease-in-out;
-}
-
-#coin-flip{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#btnFlip {
-  width: 70px;
-  height: 70px;
-  outline: none;
-  filter: drop-shadow(10px 4px 3px rgba(241, 85, 85, 0.25));
-  cursor: pointer;
-  border-radius: 100px;
-  margin-top: 10px;
-  border: none;
-  background-color: white;
-  margin-right: 30px;
-}
-#btnFlip:active {
-  filter: drop-shadow(10px 4px 3px rgba(85, 205, 241, 0.25));
-  transform: translateY(4px);
-}
-#result {
-  margin-top: 25px;
-  font-weight: bold;
-}
-
-.continue {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #7b8f7f;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-}
-.continue:hover {
-  background-color: rgb(52, 126, 55);
-}
-
-#playGameBtn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #7b8f7f;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  margin-top: 0px;
-}
-#playGameBtn:hover {
-  background-color: rgb(52, 126, 55);
 }
 
 .scoreboard {
@@ -418,8 +215,8 @@ div > h4 {
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 120px 120px 120px;
-  grid-template-rows: 120px 120px 120px;
+  grid-template-columns: 120px 120px 120px 120px;
+  grid-template-rows: 120px 120px 120px 120px;
   height: fit-content;
   width: fit-content;
   color: white;
