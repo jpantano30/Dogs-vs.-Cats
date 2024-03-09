@@ -87,6 +87,7 @@ Enjoy the game and may the best player win!
    <li> Building the puzzle as part of keeping score and to win the tournament </li>
    <li>Giving the game an easy, medium, and hard choice for when playing against the computer.</li>
    <li>Use an API and/or try Firebase.</li>
+   <li>Implement responsive design.</li>
 </details>
 
 #
@@ -116,3 +117,14 @@ Enjoy the game and may the best player win!
   <li>As a player, I want to win the coin toss, so that I can play the dog character.</li>
  </ul>
 </details>
+
+#
+<details> 
+<summary> Strategies </summary>
+ <ul> 
+  <li>TBD</li>
+  <li></li>
+  <li></li>
+ </ul>
+</details>
+
