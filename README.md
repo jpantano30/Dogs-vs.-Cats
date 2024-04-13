@@ -1,6 +1,9 @@
 # Dogs-vs.-Cats
 A game of tic-tac-toe with a coin toss to decide who starts the game off.
 
+UPDATE:
+Currently, the 2 player version when player 1 loses the coin toss, is not working & the 4x4 board for 2 player is not working. Will come back to later. 
+
 # 
 
 
